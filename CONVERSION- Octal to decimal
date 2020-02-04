@@ -1,0 +1,33 @@
+Octal to decimal conversion
+
+#include<stdio.h>
+int power(int base,int expo)
+{
+    if(expo!=0)
+     return ( base*(power(base,expo-1)) );
+    else
+     return 1;
+}
+
+int decimal(int n)
+{
+    int rem,sum=0,i=0;
+    
+    while(n!=0)
+    {
+      rem=n%10;
+      sum=sum+(rem*(power(8,i)));
+      n=n/10;
+      i++;
+    }
+    return sum;
+    
+}
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    
+    printf("%d",decimal(n));
+}
