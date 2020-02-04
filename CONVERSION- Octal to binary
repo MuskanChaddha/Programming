@@ -1,0 +1,49 @@
+Octal to binary conversion
+
+#include<stdio.h>
+int power(int base,int expo)
+{
+    if(expo!=0)
+     return (base*(power(base,(expo-1))));
+    else
+      return 1;
+}
+
+int binary(int n)
+{
+    int rem,dsum=0,i=0,rem1,osum=0,i1=1;
+    
+    while(n!=0)
+    {
+        rem=n%10;
+        dsum=dsum+(rem*power(8,i));
+        n=n/10;
+        i++;
+    }
+    printf("%d",dsum);
+
+    while(dsum!=0)
+    {
+        rem1=dsum%2;
+        osum=osum+(rem1*i1);
+        dsum=dsum/2;
+        i1=i1*10;
+    }
+    
+    return osum;
+    
+}
+
+int main()
+{
+    int n;
+    
+    scanf("%d",&n);
+    
+    printf("%d",binary(n));
+    //binary(n);
+}
+
+
+
+
